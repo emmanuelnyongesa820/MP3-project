@@ -1,1 +1,8 @@
 print("Hello, World!")
+# This is a simple Python program that prints "Hello, World!" to the console.
+# You can run this code in any Python environment, such as a Jupyter notebook, an IDE, or the command line.
+# To run this code, simply copy and paste it into your Python environment and execute it. You should see the output "Hello, World!" displayed on the screen.
+# This is a common first program for beginners learning Python, as it demonstrates the basic syntax for printing output to the console. It also serves as a simple test to ensure that your Python environment is set up correctly.
+# You can modify the message inside the print function to display different text. For example, you could change it to print "Welcome to Python programming!" or any other message you'd like.
+# Feel free to experiment with the print function and try out different messages or even combine it with other Python features to create more complex programs. Happy coding!
+input("Press Enter to continue...")
