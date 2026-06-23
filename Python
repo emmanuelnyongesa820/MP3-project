@@ -60,4 +60,9 @@ class MP3Player:
     
     
 
-        
+self.stop_btn = tk.Button(
+    button_frame,
+    text="Stop",
+    command=self.stop_track
+)
+self.stop_btn.pack(side="left", padx=5) 
