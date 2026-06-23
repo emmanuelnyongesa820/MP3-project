@@ -1,36 +1,102 @@
-
-import os
+     import os
 import tkinter as tk
 from tkinter import filedialog, messagebox
-import pygame 
+import pygame
+
+
 class MP3Player:
-    def__init__(self, root):
+    def __init__(self, root):
         self.root = root
         self.root.title("Python MP3 Player")
         self.root.geometry("400x200")
         self.root.resizable(False, False)
-    #Initialize the pygame mixer
 
         pygame.mixer.init()
-    #Track Variables
-        self.track_path=""
+
+        self.track_path = ""
         self.is_paused = False
-    #--UI Elements--
-    #Track Lablel
-        self . track_lable = tk. Label = tk.Label(
+
+        self.track_label = tk.Label(
             root,
             text="No track loaded",
             font=("Helvetica", 12),
-            wraplength=350'
-            fg="blue",
+            wraplength=350,
+            fg="blue"
         )
-        self.track_lable.pack(pady=20)
-    #Button Frame
-    button_frame = tk.Frame(root)
-    button_frame.pack(pady=10)
-    #Buttons
-    self.load_btn = tk.Button(
-        button_frame, text="Load Track", 
-    )
+        self.track_label.pack(pady=20)
 
-        
+        button_frame = tk.Frame(root)
+        button_frame.pack(pady=10)
+
+        self.load_btn = tk.Button(
+            button_frame,
+            text="Load Track",
+            command=self.load_track
+        )
+        self.load_btn.pack(side="left", padx=5)
+
+        self.play_btn = tk.Button(
+            button_frame,
+            text="Play",
+            command=self.play_track
+        )
+        self.play_btn.pack(side="left", padx=5)
+
+      
+        self.pause_btn = tk.Button(
+            button_frame,
+            text="Pause",
+            command=self.pause_track
+        )
+        self.pause_btn.pack(side="left", padx=5)
+
+        self.resume_btn = tk.Button(
+            button_frame,
+            text="Resume",
+            command=self.resume_track
+        )
+        self.resume_btn.pack(side="left", padx=5)
+
+        self.stop_btn = tk.Button(
+            button_frame,
+            text="Stop",
+            command=self.stop_track
+        )
+        self.stop_btn.pack(side="left", padx=5)
+
+    def load_track(self):
+        self.track_path = filedialog.askopenfilename(
+            filetypes=[("MP3 Files", "*.mp3")]
+        )
+
+        if self.track_path:
+            song_name = os.path.basename(self.track_path)
+            self.track_label.config(text=song_name)
+
+    def play_track(self):
+        if self.track_path == "":
+            messagebox.showwarning("No Track", "Please load an MP3 file first")
+            return
+
+        pygame.mixer.music.load(self.track_path)
+        pygame.mixer.music.play()
+        self.is_paused = False
+
+   #
+    def pause_track(self):
+        pygame.mixer.music.pause()
+        self.is_paused = True
+
+    def resume_track(self):
+        pygame.mixer.music.unpause()
+        self.is_paused = False
+
+    def stop_track(self):
+        pygame.mixer.music.stop()
+        self.is_paused = False
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = MP3Player(root)
+    root.mainloop()
