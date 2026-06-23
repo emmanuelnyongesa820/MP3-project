@@ -1,9 +1,36 @@
-print("Hello, World!")
-# This is a simple Python program that prints "Hello, World!" to the console.
-# You can run this code in any Python environment, such as a Jupyter notebook, an IDE, or the command line.
-# To run this code, simply copy and paste it into your Python environment and execute it. You should see the output "Hello, World!" displayed on the screen.
-# This is a common first program for beginners learning Python, as it demonstrates the basic syntax for printing output to the console. It also serves as a simple test to ensure that your Python environment is set up correctly.
-# You can modify the message inside the print function to display different text. For example, you could change it to print "Welcome to Python programming!" or any other message you'd like.
-# Feel free to experiment with the print function and try out different messages or even combine it with other Python features to create more complex programs. Happy coding!
-input("Press Enter to continue...")
-print("1234")
+
+import os
+import tkinter as tk
+from tkinter import filedialog, messagebox
+import pygame 
+class MP3Player:
+    def__init__(self, root):
+        self.root = root
+        self.root.title("Python MP3 Player")
+        self.root.geometry("400x200")
+        self.root.resizable(False, False)
+    #Initialize the pygame mixer
+
+        pygame.mixer.init()
+    #Track Variables
+        self.track_path=""
+        self.is_paused = False
+    #--UI Elements--
+    #Track Lablel
+        self . track_lable = tk. Label = tk.Label(
+            root,
+            text="No track loaded",
+            font=("Helvetica", 12),
+            wraplength=350'
+            fg="blue",
+        )
+        self.track_lable.pack(pady=20)
+    #Button Frame
+    button_frame = tk.Frame(root)
+    button_frame.pack(pady=10)
+    #Buttons
+    self.load_btn = tk.Button(
+        button_frame, text="Load Track", 
+    )
+
+        
